@@ -6,6 +6,7 @@
   <meta name="description" content="New Bengal Accountability & Renaissance Framework: Open-source governance diagnostics integrating documented ED, CBI, NHRC, and Court cases as the accountability layer inside a broader positive vision for Bengal's future.">
   <meta name="keywords" content="Bengal governance, accountability framework, ED cases, CBI investigations, NHRC reports, judicial accountability, WBSSC scam, Saradha, Supreme Court">
   <meta name="author" content="Kallol Chakrabarti, Global Independent Researcher">
+  <meta name="google-site-verification" content="6qcwYwzA6RaAwLVA6G3HBTprB8Bdw4A16uZCF5e9Ar8" />
   <title>New Bengal Accountability &amp; Renaissance Framework | Helix Originator</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -413,6 +414,125 @@
     .reveal.d1 { transition-delay: 0.1s; }
     .reveal.d2 { transition-delay: 0.2s; }
     .reveal.d3 { transition-delay: 0.3s; }
+    /* REFERENCE GUIDE BUTTON */
+    .btn-refguide {
+      background: linear-gradient(135deg, #1a1a30, #252540);
+      color: var(--text-gold); border: 1.5px solid rgba(212,168,83,0.4);
+      position: relative; overflow: hidden;
+    }
+    .btn-refguide:hover { border-color: var(--gold-bright); transform: translateY(-3px); box-shadow: 0 8px 32px rgba(212,168,83,0.22); color: var(--gold-ultra); }
+    /* REFERENCE GUIDE PROMO SECTION */
+    .refguide-promo {
+      background: linear-gradient(135deg, var(--bg-card) 0%, #0d0d1e 100%);
+      border: 1px solid rgba(212,168,83,0.28); border-radius: var(--radius-xl);
+      padding: 48px; display: grid; grid-template-columns: 1fr auto; gap: 40px; align-items: center;
+      position: relative; overflow: hidden; max-width: 1000px; margin: 0 auto;
+    }
+    .refguide-promo::before { content:''; position:absolute; top:0; left:0; right:0; height:3px; background: linear-gradient(90deg, var(--violet), var(--gold-bright), var(--teal)); }
+    .refguide-promo::after {
+      content: '\f02d'; font-family: 'Font Awesome 6 Free'; font-weight: 900;
+      position: absolute; right: -20px; bottom: -30px; font-size: 10rem;
+      color: rgba(212,168,83,0.04); pointer-events: none; line-height: 1;
+    }
+    .refguide-promo-text h3 { font-family: 'Crimson Pro', serif; font-size: 1.85rem; font-weight: 600; margin-bottom: 12px; }
+    .refguide-promo-text p { color: var(--text-secondary); font-size: 0.92rem; line-height: 1.8; margin-bottom: 20px; }
+    .refguide-meta-pills { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 26px; }
+    .rg-pill { display: inline-flex; align-items: center; gap: 5px; padding: 5px 12px; border-radius: 99px; font-size: 0.68rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; }
+    .rg-pill-gold { background: rgba(212,168,83,0.1); color: var(--text-gold); border: 1px solid rgba(212,168,83,0.25); }
+    .rg-pill-violet { background: rgba(124,77,255,0.1); color: #a888f0; border: 1px solid rgba(124,77,255,0.25); }
+    .rg-pill-teal { background: rgba(26,188,156,0.1); color: var(--teal); border: 1px solid rgba(26,188,156,0.25); }
+    .rg-pill-red { background: rgba(192,57,43,0.1); color: #e07060; border: 1px solid rgba(192,57,43,0.25); }
+    .refguide-promo-cta { display: flex; flex-direction: column; gap: 12px; align-items: stretch; flex-shrink: 0; }
+    .btn-rg-open {
+      display: inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 15px 30px;
+      background: var(--grad-gold); color: #050508; border-radius: var(--radius);
+      font-size: 0.9rem; font-weight: 700; cursor: pointer; border: none; white-space: nowrap;
+      transition: all 0.25s;
+    }
+    .btn-rg-open:hover { transform: translateY(-3px); box-shadow: 0 12px 36px rgba(212,168,83,0.4); }
+    .btn-rg-gh {
+      display: inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 12px 24px;
+      background: transparent; color: var(--text-secondary); border-radius: var(--radius);
+      font-size: 0.83rem; font-weight: 600; cursor: pointer; border: 1.5px solid var(--border-mid); white-space: nowrap;
+      text-decoration: none; transition: all 0.25s;
+    }
+    .btn-rg-gh:hover { border-color: var(--gold-dim); color: var(--text-gold); }
+    /* REFERENCE GUIDE MODAL */
+    #rg-modal {
+      position: fixed; inset: 0; z-index: 500;
+      background: rgba(5,5,8,0.94); backdrop-filter: blur(18px);
+      display: flex; align-items: flex-start; justify-content: center;
+      padding: 40px 20px 40px; opacity: 0; visibility: hidden; transition: opacity 0.3s, visibility 0.3s;
+      overflow-y: auto;
+    }
+    #rg-modal.open { opacity: 1; visibility: visible; }
+    .rg-modal-box {
+      background: var(--bg-card); border: 1px solid var(--border-mid); border-radius: var(--radius-xl);
+      width: 100%; max-width: 1020px; position: relative; overflow: hidden;
+      transform: translateY(28px); transition: transform 0.35s ease; flex-shrink: 0;
+    }
+    #rg-modal.open .rg-modal-box { transform: translateY(0); }
+    .rg-modal-box::before { content:''; position:absolute; top:0; left:0; right:0; height:3px; background: linear-gradient(90deg, var(--violet), var(--gold-bright), var(--teal)); }
+    .rg-modal-head {
+      padding: 30px 36px 22px; border-bottom: 1px solid var(--border-dim);
+      display: flex; justify-content: space-between; align-items: flex-start; gap: 20px;
+    }
+    .rg-modal-head-left h2 { font-family: 'Crimson Pro', serif; font-size: 1.65rem; font-weight: 600; margin-bottom: 5px; }
+    .rg-modal-head-left p { font-size: 0.8rem; color: var(--text-muted); }
+    .rg-modal-close {
+      width: 36px; height: 36px; background: var(--bg-elevated); border: 1px solid var(--border-mid);
+      border-radius: var(--radius); display: flex; align-items: center; justify-content: center;
+      color: var(--text-muted); cursor: pointer; font-size: 15px; flex-shrink: 0; transition: all 0.2s;
+    }
+    .rg-modal-close:hover { background: var(--bg-card-hover); color: var(--text-gold); border-color: var(--gold-dim); }
+    .rg-tabs { display: flex; gap: 0; border-bottom: 1px solid var(--border-dim); padding: 0 36px; overflow-x: auto; scrollbar-width: none; }
+    .rg-tabs::-webkit-scrollbar { display: none; }
+    .rg-tab {
+      padding: 13px 18px; font-size: 0.75rem; font-weight: 600; text-transform: uppercase;
+      letter-spacing: 0.07em; color: var(--text-muted); cursor: pointer; border: none;
+      background: transparent; border-bottom: 2px solid transparent; margin-bottom: -1px;
+      white-space: nowrap; transition: all 0.2s; flex-shrink: 0;
+    }
+    .rg-tab:hover { color: var(--text-secondary); }
+    .rg-tab.active { color: var(--text-gold); border-bottom-color: var(--gold-bright); }
+    .rg-panels { padding: 30px 36px 36px; }
+    .rg-panel { display: none; }
+    .rg-panel.active { display: block; }
+    .rg-panel h3 { font-family: 'Crimson Pro', serif; font-size: 1.4rem; font-weight: 600; margin-bottom: 14px; line-height: 1.3; }
+    .rg-panel h4 { font-size: 0.78rem; font-weight: 700; color: var(--text-gold); margin: 20px 0 9px; text-transform: uppercase; letter-spacing: 0.07em; }
+    .rg-panel p { font-size: 0.87rem; color: var(--text-secondary); line-height: 1.8; margin-bottom: 12px; }
+    .rg-panel ul { list-style: none; margin-bottom: 14px; }
+    .rg-panel ul li { font-size: 0.85rem; color: var(--text-secondary); padding: 6px 0 6px 18px; position: relative; line-height: 1.6; border-bottom: 1px solid var(--border-dim); }
+    .rg-panel ul li:last-child { border-bottom: none; }
+    .rg-panel ul li::before { content: '▹'; position: absolute; left: 0; color: var(--text-gold); font-size: 9px; top: 9px; }
+    .rg-blockq { background: rgba(212,168,83,0.05); border-left: 3px solid var(--gold-bright); padding: 15px 18px; border-radius: 0 8px 8px 0; margin: 16px 0; font-family: 'Crimson Pro', serif; font-style: italic; font-size: 1rem; color: var(--text-primary); line-height: 1.75; }
+    .rg-tl { display: flex; flex-direction: column; gap: 8px; }
+    .rg-tl-row { display: grid; grid-template-columns: 150px 1fr; gap: 14px; padding: 11px 14px; background: var(--bg-elevated); border-radius: var(--radius); border: 1px solid var(--border-dim); }
+    .rg-tl-row:hover { border-color: var(--border-mid); }
+    .rg-tl-date { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; font-weight: 600; color: var(--text-gold); line-height: 1.5; }
+    .rg-tl-event { font-size: 0.83rem; color: var(--text-secondary); line-height: 1.6; }
+    .rg-stat-table { width: 100%; border-collapse: collapse; font-size: 0.82rem; margin-bottom: 16px; border-radius: var(--radius); overflow: hidden; }
+    .rg-stat-table th { padding: 10px 14px; text-align: left; color: var(--text-gold); font-size: 0.66rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; background: var(--bg-elevated); border-bottom: 1px solid var(--border-mid); }
+    .rg-stat-table td { padding: 10px 14px; border-bottom: 1px solid var(--border-dim); color: var(--text-secondary); vertical-align: top; }
+    .rg-stat-table tr:last-child td { border-bottom: none; }
+    .rg-stat-table tr:hover td { background: var(--bg-card-hover); }
+    .rg-stat-table td:first-child { color: var(--text-primary); font-weight: 600; white-space: nowrap; }
+    .rg-holdings { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 20px; }
+    .rg-holding-item { background: var(--bg-elevated); border: 1px solid var(--border-dim); border-radius: var(--radius); padding: 14px 15px; }
+    .rg-issue { font-size: 0.7rem; font-weight: 700; color: var(--text-gold); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 6px; }
+    .rg-det { font-size: 0.81rem; color: var(--text-secondary); line-height: 1.6; }
+    .rg-impl-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px; }
+    .rg-impl-card { background: var(--bg-elevated); border: 1px solid var(--border-dim); border-radius: var(--radius); padding: 18px; }
+    .rg-impl-title { font-size: 0.75rem; font-weight: 700; color: var(--text-gold); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 11px; display: flex; align-items: center; gap: 7px; }
+    .rg-impl-title i { font-size: 12px; }
+    .rg-impl-card ul { margin: 0; }
+    .rg-impl-card ul li { font-size: 0.81rem; color: var(--text-secondary); padding: 4px 0 4px 16px; border-bottom: 1px solid var(--border-dim); line-height: 1.55; }
+    .rg-impl-card ul li:last-child { border-bottom: none; }
+    .rg-dl-strip { background: rgba(212,168,83,0.06); border: 1px solid rgba(212,168,83,0.2); border-radius: var(--radius); padding: 17px 20px; display: flex; align-items: center; justify-content: space-between; gap: 14px; flex-wrap: wrap; margin-top: 22px; }
+    .rg-dl-strip p { font-size: 0.84rem; color: var(--text-secondary); margin: 0; }
+    .rg-dl-strip strong { color: var(--text-gold); }
+    .rg-dl-btn { display: inline-flex; align-items: center; gap: 7px; padding: 10px 18px; background: var(--grad-gold); color: #050508; border-radius: var(--radius); font-size: 0.8rem; font-weight: 700; text-decoration: none; transition: all 0.2s; white-space: nowrap; }
+    .rg-dl-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 22px rgba(212,168,83,0.35); }
     /* RESPONSIVE */
     @media (max-width: 960px) {
       .footer-top { grid-template-columns: 1fr 1fr; }
@@ -429,6 +549,14 @@
       .footer-top { grid-template-columns: 1fr; gap: 24px; }
       .fw-grid, .phil-grid, .cases-grid { grid-template-columns: 1fr; }
       .findings-grid { grid-template-columns: 1fr; }
+      .refguide-promo { grid-template-columns: 1fr; padding: 28px 20px; }
+      .refguide-promo-cta { flex-direction: row; flex-wrap: wrap; }
+      .rg-modal-head { padding: 22px 18px 16px; }
+      .rg-tabs { padding: 0 14px; }
+      .rg-panels { padding: 18px 16px 24px; }
+      .rg-holdings { grid-template-columns: 1fr; }
+      .rg-tl-row { grid-template-columns: 1fr; gap: 4px; }
+      .rg-dl-strip { flex-direction: column; align-items: flex-start; }
     }
   </style>
 </head>
@@ -448,6 +576,7 @@
       <li><a href="#timeline">Timeline</a></li>
       <li><a href="#framework">Framework</a></li>
       <li><a href="#github">GitHub</a></li>
+      <li><a href="#" onclick="openRefGuide();return false;" style="color:var(--text-gold);">Reference Guide</a></li>
     </ul>
     <div style="display:flex;align-items:center;gap:12px;">
       <a href="#cases" class="nav-cta"><i class="fas fa-folder-open"></i> Explore Cases</a>
@@ -479,6 +608,7 @@
       <a href="#ruling" class="btn btn-gold"><i class="fas fa-gavel"></i> SC Judgment Analysis</a>
       <a href="#cases" class="btn btn-outline"><i class="fas fa-folder-open"></i> Browse Cases</a>
       <a href="#framework" class="btn btn-outline"><i class="fas fa-lightbulb"></i> Renaissance Model</a>
+      <button class="btn btn-refguide" onclick="openRefGuide()"><i class="fas fa-book-open"></i> Case Law Reference Guide</button>
     </div>
   </div>
 </section>
@@ -1106,6 +1236,307 @@
   </div>
 </section>
 
+<!-- REFERENCE GUIDE SECTION -->
+<section class="section section-alt" id="refguide">
+  <div class="section-inner">
+    <div class="section-header ctr" style="margin-bottom:44px;">
+      <div class="section-label"><i class="fas fa-book-open"></i> Legal Reference</div>
+      <h2 class="section-title">Case Law &amp; Investigation Reference Guide</h2>
+      <p class="section-desc">A comprehensive ready reckoner covering West Bengal's major political-financial controversies, key SC judgments, PMLA legal principles, and cross-agency investigation timelines — 2013 to 2026.</p>
+    </div>
+    <div class="refguide-promo reveal">
+      <div class="refguide-promo-text">
+        <h3>West Bengal Political-Financial Controversies &amp; Key Legal Developments</h3>
+        <p>This reference guide synthesises the Saradha chit-fund collapse, post-poll violence, Sandeshkhali crisis, SSC recruitment scam, and the landmark Supreme Court ruling in <em>Abhishek Banerjee vs. Enforcement Directorate</em> (09 Sep 2024) on PMLA summons powers. Includes statutes quick-reference, procedural cross-comparisons, and implications for legal practitioners, investigating agencies, and policy observers.</p>
+        <div class="refguide-meta-pills">
+          <span class="rg-pill rg-pill-gold"><i class="fas fa-landmark"></i> 2 SC Judgments</span>
+          <span class="rg-pill rg-pill-red"><i class="fas fa-shield-alt"></i> CBI / ED / NHRC</span>
+          <span class="rg-pill rg-pill-violet"><i class="fas fa-gavel"></i> PMLA Deep Dive</span>
+          <span class="rg-pill rg-pill-teal"><i class="fas fa-clock"></i> 2013&ndash;2026 Timeline</span>
+          <span class="rg-pill rg-pill-gold"><i class="fas fa-code-branch"></i> GitHub &middot; CC BY 4.0</span>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;gap:10px;align-items:center;">
+          <span style="font-size:0.75rem;color:var(--text-muted);"><i class="fab fa-github" style="margin-right:5px;color:var(--text-gold);"></i>
+          <strong style="color:var(--text-secondary);">HelixOriginator/Project-New-Bengal</strong> &nbsp;&middot;&nbsp; West_Bengal_Case_Law_and_Investigation_Reference_Guide.docx</span>
+        </div>
+      </div>
+      <div class="refguide-promo-cta">
+        <button class="btn-rg-open" onclick="openRefGuide()">
+          <i class="fas fa-book-open"></i> Open Reference Guide
+        </button>
+        <a class="btn-rg-gh" href="https://github.com/HelixOriginator/Project-New-Bengal/blob/main/West_Bengal_Case_Law_and_Investigation_Reference_Guide.docx" target="_blank">
+          <i class="fab fa-github"></i> View on GitHub
+        </a>
+        <a class="btn-rg-gh" href="https://github.com/HelixOriginator/Project-New-Bengal/raw/main/West_Bengal_Case_Law_and_Investigation_Reference_Guide.docx" target="_blank">
+          <i class="fas fa-download"></i> Download .docx
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REFERENCE GUIDE MODAL -->
+<div id="rg-modal" role="dialog" aria-modal="true" aria-labelledby="rg-modal-title">
+  <div class="rg-modal-box">
+    <div class="rg-modal-head">
+      <div class="rg-modal-head-left">
+        <h2 id="rg-modal-title"><i class="fas fa-book-open" style="color:var(--text-gold);margin-right:10px;font-size:1.1rem;"></i>West Bengal Case Law &amp; Investigation Reference Guide</h2>
+        <p>Comprehensive Ready Reckoner &middot; Combined from scam reports &amp; Supreme Court Judgment (09-Sep-2024) &middot; Compiled by Kallol Chakrabarti</p>
+      </div>
+      <button class="rg-modal-close" onclick="closeRefGuide()" aria-label="Close"><i class="fas fa-times"></i></button>
+    </div>
+
+    <div class="rg-tabs" role="tablist">
+      <button class="rg-tab active" role="tab" aria-selected="true" onclick="switchTab(this,'tab-overview')">Overview</button>
+      <button class="rg-tab" role="tab" aria-selected="false" onclick="switchTab(this,'tab-saradha')">Saradha &amp; Narada</button>
+      <button class="rg-tab" role="tab" aria-selected="false" onclick="switchTab(this,'tab-ppv')">Post-Poll Violence</button>
+      <button class="rg-tab" role="tab" aria-selected="false" onclick="switchTab(this,'tab-sandesh')">Sandeshkhali</button>
+      <button class="rg-tab" role="tab" aria-selected="false" onclick="switchTab(this,'tab-ssc')">SSC Scam</button>
+      <button class="rg-tab" role="tab" aria-selected="false" onclick="switchTab(this,'tab-abhishek')">SC Judgment (2024)</button>
+      <button class="rg-tab" role="tab" aria-selected="false" onclick="switchTab(this,'tab-statutes')">Statutes &amp; PMLA</button>
+      <button class="rg-tab" role="tab" aria-selected="false" onclick="switchTab(this,'tab-implications')">Implications</button>
+    </div>
+
+    <div class="rg-panels">
+
+      <!-- TAB: OVERVIEW -->
+      <div class="rg-panel active" id="tab-overview">
+        <h3>Section Overview: West Bengal Political-Financial Controversies (2013&ndash;2026)</h3>
+        <p>This reference guide is compiled from primary documentation including CBI charge sheets, ED press releases, NHRC fact-finding reports, Supreme Court judgments, and Calcutta High Court orders. It covers five major clusters of governance failures and their legal outcomes.</p>
+        <div class="rg-holdings">
+          <div class="rg-holding-item">
+            <div class="rg-issue"><i class="fas fa-landmark" style="margin-right:5px;"></i> Section 1</div>
+            <div class="rg-det">Chronological Timeline of Major Incidents: Saradha Collapse, Post-Poll Violence, Sandeshkhali Crisis, SSC/Teachers Recruitment Scam</div>
+          </div>
+          <div class="rg-holding-item">
+            <div class="rg-issue"><i class="fas fa-gavel" style="margin-right:5px;"></i> Section 2</div>
+            <div class="rg-det">SC Judgment — Abhishek Banerjee vs. ED (Crl. Appeal 2221-2222/2023, 09 Sep 2024): PMLA summons powers, territorial jurisdiction, gender neutrality</div>
+          </div>
+          <div class="rg-holding-item">
+            <div class="rg-issue"><i class="fas fa-project-diagram" style="margin-right:5px;"></i> Section 3</div>
+            <div class="rg-det">Interconnections &amp; Cross-References: Legal-agency overlaps, recurring themes across all cases, federal tensions, judicial oversight patterns</div>
+          </div>
+          <div class="rg-holding-item">
+            <div class="rg-issue"><i class="fas fa-book" style="margin-right:5px;"></i> Section 4 &amp; 5</div>
+            <div class="rg-det">Quick Reference Key Statutes (PMLA, Cr.P.C., Constitution) and Practical Implications for legal practitioners, investigating agencies, and policy observers</div>
+          </div>
+        </div>
+        <h4>Recurring Themes Across All Cases</h4>
+        <ul>
+          <li><strong>Federal Tensions:</strong> State vs. Central agency jurisdiction — WB government vs. CBI/ED — a persistent pattern across all documented cases</li>
+          <li><strong>Procedural Delays:</strong> Missing records, witness issues, pending charge sheets stalling trials — notably in Saradha, Narada, and SSC scam proceedings</li>
+          <li><strong>Political Weaponization Allegations:</strong> Accusations of central agencies targeting opposition (raised in Narada, Sandeshkhali, Coal case contexts)</li>
+          <li><strong>Judicial Oversight:</strong> Calcutta HC and Supreme Court repeatedly intervening to balance investigative powers with individual rights</li>
+          <li><strong>Victim Protection vs. Investigative Efficiency:</strong> Tension between witness safeguards (Cr.P.C. protections) and effective money-laundering inquiries (PMLA powers)</li>
+        </ul>
+        <div class="rg-dl-strip">
+          <p><strong>Full document available on GitHub:</strong> West_Bengal_Case_Law_and_Investigation_Reference_Guide.docx</p>
+          <a class="rg-dl-btn" href="https://github.com/HelixOriginator/Project-New-Bengal/raw/main/West_Bengal_Case_Law_and_Investigation_Reference_Guide.docx" target="_blank"><i class="fas fa-download"></i> Download .docx</a>
+        </div>
+      </div>
+
+      <!-- TAB: SARADHA & NARADA -->
+      <div class="rg-panel" id="tab-saradha">
+        <h3>Saradha Chit-Fund Scam &amp; Narada Sting Operation Timeline</h3>
+        <p>The Saradha collapse (April 2013) and Narada sting operation (filmed 2014, released 2016) form the foundational accountability cases in this reference period. April 2026 Calcutta HC bail to Sudipta Sen after ~13 years in custody citing "systemic collapse of trial machinery" illustrates persistent judicial concern.</p>
+        <div class="rg-tl">
+          <div class="rg-tl-row"><div class="rg-tl-date">April 2013</div><div class="rg-tl-event">Saradha Group collapses; thousands of investors lose crores; Sudipta Sen arrested. Multi-state Ponzi scheme affecting ~1.74 million depositors.</div></div>
+          <div class="rg-tl-row"><div class="rg-tl-date">2014</div><div class="rg-tl-event">Journalist Mathew Samuel conducts Narada sting operation (motivated partly by Saradha suspicions); TMC leaders allegedly recorded accepting cash.</div></div>
+          <div class="rg-tl-row"><div class="rg-tl-date">14 March 2016</div><div class="rg-tl-event">Narada sting videos released publicly ahead of West Bengal Assembly elections.</div></div>
+          <div class="rg-tl-row"><div class="rg-tl-date">17 June 2016</div><div class="rg-tl-event">WB Government orders police probe into Narada. Calcutta HC stays state police probe (5 Aug 2016).</div></div>
+          <div class="rg-tl-row"><div class="rg-tl-date">March 2017</div><div class="rg-tl-event">Disciplinary proceedings against IPS officer S.M.H. Mirza; Calcutta HC orders CBI investigation into Narada.</div></div>
+          <div class="rg-tl-row"><div class="rg-tl-date">17 April 2017</div><div class="rg-tl-event">CBI files FIR against 12 TMC leaders in Narada case under Prevention of Corruption Act.</div></div>
+          <div class="rg-tl-row"><div class="rg-tl-date">8 May 2021</div><div class="rg-tl-event">Governor grants prosecution sanction for TMC leaders in Narada case.</div></div>
+          <div class="rg-tl-row"><div class="rg-tl-date">17 May 2021</div><div class="rg-tl-event">CBI arrests Firhad Hakim, Subrata Mukherjee, Madan Mitra, Sovan Chatterjee in Narada case.</div></div>
+          <div class="rg-tl-row"><div class="rg-tl-date">17–28 May 2021</div><div class="rg-tl-event">Bail granted, stayed, house arrest ordered, interim bail granted by Calcutta HC — reflecting high political sensitivity.</div></div>
+          <div class="rg-tl-row"><div class="rg-tl-date">April 2026</div><div class="rg-tl-event">Calcutta HC grants bail to Sudipta Sen after ~13 years in custody, citing "systemic collapse of trial machinery". Many Saradha trials remain stalled.</div></div>
+        </div>
+      </div>
+
+      <!-- TAB: POST-POLL VIOLENCE -->
+      <div class="rg-panel" id="tab-ppv">
+        <h3>Post-Poll Violence in West Bengal (2021)</h3>
+        <p>Following the AITC's third consecutive term victory in May 2021, widespread political violence was documented. The NHRC took suo-motu cognizance under Right to Life provisions; Calcutta HC ordered CBI investigation for murder/rape cases and SIT for other violence.</p>
+        <div class="rg-tl">
+          <div class="rg-tl-row"><div class="rg-tl-date">2 May 2021</div><div class="rg-tl-event">After AITC's third-term victory, widespread violence: assaults, arson, looting, targeted clashes reported across multiple districts.</div></div>
+          <div class="rg-tl-row"><div class="rg-tl-date">4 May 2021</div><div class="rg-tl-event">NHRC takes suo-motu cognizance under "Right to Life"; directs DIG to form fact-finding team (report due in 2 weeks). Official press release issued from New Delhi.</div></div>
+          <div class="rg-tl-row"><div class="rg-tl-date">4–5 May 2021</div><div class="rg-tl-event">Assam minister Himanta Biswa Sarma claims hundreds of BJP workers/families cross border to escape violence.</div></div>
+          <div class="rg-tl-row"><div class="rg-tl-date">5 May 2021</div><div class="rg-tl-event">CM Mamata Banerjee reinstates state police officers previously transferred by Election Commission.</div></div>
+          <div class="rg-tl-row"><div class="rg-tl-date">10 July 2021</div><div class="rg-tl-event">Large AITC rally in Bhagabanpur protests alleged BJP "reign of terror".</div></div>
+          <div class="rg-tl-row"><div class="rg-tl-date">19 August 2021</div><div class="rg-tl-event">Calcutta HC orders CBI probe into murder/rape cases; SIT for other violence cases.</div></div>
+          <div class="rg-tl-row"><div class="rg-tl-date">3 January 2022</div><div class="rg-tl-event">CBI drops 21 sexual assault cases (lack of evidence); continues investigation in 39 sexual assault + 52 unnatural death cases.</div></div>
+          <div class="rg-tl-row"><div class="rg-tl-date">April 2022</div><div class="rg-tl-event">At least 303 displaced BJP workers/leaders remain outside WB, citing safety concerns.</div></div>
+          <div class="rg-tl-row"><div class="rg-tl-date">2025</div><div class="rg-tl-event">First conviction in post-poll violence rape case secured. 181 fresh FIRs registered under subsequent administration.</div></div>
+        </div>
+      </div>
+
+      <!-- TAB: SANDESHKHALI -->
+      <div class="rg-panel" id="tab-sandesh">
+        <h3>Sandeshkhali Violence &amp; ED Attack (2024)</h3>
+        <p>The Sandeshkhali crisis began with a ration fund embezzlement case (Oct 2023) that led to ED enforcement operations being violently disrupted in January 2024. Sheikh Shahjahan's 55-day evasion of arrest became a national focus.</p>
+        <div class="rg-tl">
+          <div class="rg-tl-row"><div class="rg-tl-date">October 2023</div><div class="rg-tl-event">Former TMC minister Jyotipriya Mallick arrested; pleads guilty to ration fund embezzlement; implicates local leader Sheikh Shahjahan.</div></div>
+          <div class="rg-tl-row"><div class="rg-tl-date">5 January 2024</div><div class="rg-tl-event">ED team raids Sandeshkhali to interrogate Shahjahan; mob assault injures 3 officers, destroys phones/files, vandalizes media vehicles. Shahjahan goes into hiding.</div></div>
+          <div class="rg-tl-row"><div class="rg-tl-date">11 January 2024</div><div class="rg-tl-event">Calcutta HC grants protection to ED officers; stays FIRs registered by local police against ED.</div></div>
+          <div class="rg-tl-row"><div class="rg-tl-date">25 January 2024</div><div class="rg-tl-event">ED launches second raid on Shahjahan's residence with CISF support; forces entry, finds nothing.</div></div>
+          <div class="rg-tl-row"><div class="rg-tl-date">Early February 2024</div><div class="rg-tl-event">Local women break silence; media reports systemic sexual assault allegations against Shahjahan, Shibu Hazra, Uttam Sardar; accusations of extortion, land grabs.</div></div>
+          <div class="rg-tl-row"><div class="rg-tl-date">17 February 2024</div><div class="rg-tl-event">Shibu Hazra (Shahjahan's aide, TMC leader) arrested; remanded to 8 days police custody after gang-rape charges added.</div></div>
+          <div class="rg-tl-row"><div class="rg-tl-date">29 February 2024</div><div class="rg-tl-event">Sheikh Shahjahan arrested at Minakhan (~30 km from Sandeshkhali) after 55 days on run; TMC suspends him immediately.</div></div>
+        </div>
+      </div>
+
+      <!-- TAB: SSC SCAM -->
+      <div class="rg-panel" id="tab-ssc">
+        <h3>SSC / Teachers Recruitment Scam Timeline</h3>
+        <p>The SSC scam covers irregularities in WB teacher and non-teaching staff recruitment from 2014–2016, with ED and CBI arrests from 2022 onwards. The Supreme Court's April 2025 en-bloc cancellation (2025 INSC 437) is the definitive judicial outcome.</p>
+        <div class="rg-tl">
+          <div class="rg-tl-row"><div class="rg-tl-date">2014–2016</div><div class="rg-tl-event">Alleged irregularities in WB teacher/staff recruitment via SSC and primary education boards. WBSSC engages M/s. NYSA for OMR scanning.</div></div>
+          <div class="rg-tl-row"><div class="rg-tl-date">July 2019</div><div class="rg-tl-event">WBSSC Chairman orders destruction of physical OMR sheets despite ongoing recruitment process — later identified as a deliberate cover-up.</div></div>
+          <div class="rg-tl-row"><div class="rg-tl-date">July 2022</div><div class="rg-tl-event">ED arrests Partha Chatterjee (Education Minister); ₹21 crore + ₹50L jewellery from Arpita Mukherjee's flat, then ₹27.90 crore + 6 kg gold from second apartment.</div></div>
+          <div class="rg-tl-row"><div class="rg-tl-date">Sep 2022</div><div class="rg-tl-event">CBI recovers three critical hard disks from ex-NYSA employee Pankaj Bansal in Ghaziabad; forensic analysis reveals systematic OMR score manipulation.</div></div>
+          <div class="rg-tl-row"><div class="rg-tl-date">2022–2024</div><div class="rg-tl-event">Investigations expand into SSC assistant teacher, Group C/D recruitment, primary teacher appointments. CBI files multiple charge sheets.</div></div>
+          <div class="rg-tl-row"><div class="rg-tl-date">Early 2025</div><div class="rg-tl-event">Supreme Court grants conditional bail to Partha Chatterjee in primary teachers recruitment case.</div></div>
+          <div class="rg-tl-row"><div class="rg-tl-date">3 April 2025</div><div class="rg-tl-event">Supreme Court (2025 INSC 437) upholds en-bloc cancellation of entire 2016 WBSSC selection; 6,276+ illegal appointments confirmed; tainted candidates ordered to refund salaries + 12% p.a. interest.</div></div>
+          <div class="rg-tl-row"><div class="rg-tl-date">11 April 2026</div><div class="rg-tl-event">ED conducts fresh searches at Partha Chatterjee's residence and premises linked to Prasanna Kumar Roy in SSC recruitment scam.</div></div>
+        </div>
+      </div>
+
+      <!-- TAB: ABHISHEK BANERJEE SC JUDGMENT -->
+      <div class="rg-panel" id="tab-abhishek">
+        <h3>SC Judgment: Abhishek Banerjee &amp; Anr. vs. Directorate of Enforcement</h3>
+        <p>Criminal Appeal Nos. 2221-2222 of 2023 &middot; Decided: 09 September 2024 &middot; Bench: Justice Bela M. Trivedi &amp; Justice Satish Chandra Sharma</p>
+        <h4>Case Background</h4>
+        <p>The case arose from the Coal Theft / Money Laundering matter (ED ECIR No. 17/HIU/2020). Inspector Ashok Kumar Mishra allegedly received <strong>₹168 crores in 109 days</strong> from coal mafia operative Anup Majee for delivery to "political bosses" including co-accused Vinay Mishra. Funds transferred via vouchers to Delhi and overseas. The challenge was to ED summons under Section 50 PMLA requiring personal appearance in New Delhi.</p>
+        <h4>Key Legal Issues &amp; SC Holdings</h4>
+        <div class="rg-holdings">
+          <div class="rg-holding-item">
+            <div class="rg-issue">PMLA vs. Cr.P.C. Hierarchy</div>
+            <div class="rg-det">PMLA is a self-contained code; Section 71 gives overriding effect over inconsistent laws including Cr.P.C.; Section 65 applies Cr.P.C. only where not inconsistent.</div>
+          </div>
+          <div class="rg-holding-item">
+            <div class="rg-issue">Section 50 vs. Section 160/161 Cr.P.C.</div>
+            <div class="rg-det">Not applicable: Chapter XII Cr.P.C. governs "investigation" by police; Section 50 PMLA governs "inquiry" by ED authorities (not police officers). Glaring inconsistencies exist in admissibility of statements.</div>
+          </div>
+          <div class="rg-holding-item">
+            <div class="rg-issue">Constitutional Challenge Art. 20(3), 21</div>
+            <div class="rg-det">Rejected. Vijay Madanlal precedent holds summons under Section 50 is for evidence collection, not prosecution. Article 20(3) applies only post-formal arrest.</div>
+          </div>
+          <div class="rg-holding-item">
+            <div class="rg-issue">Territorial Jurisdiction</div>
+            <div class="rg-det">No illegality: HIU not restricted to territorial jurisdiction; alleged transfer of ₹168 crores to Delhi establishes territorial nexus; Abhishek Banerjee has Delhi residence as MP.</div>
+          </div>
+          <div class="rg-holding-item">
+            <div class="rg-issue">Gender-Based Protection</div>
+            <div class="rg-det">Section 50 is gender-neutral; legislature has expressly carved exceptions elsewhere (Section 45 proviso); courts cannot read in exceptions where none exist.</div>
+          </div>
+          <div class="rg-holding-item">
+            <div class="rg-issue">Complaint under Section 174 IPC</div>
+            <div class="rg-det">No opinion expressed on merits (pending before CMM); no illegality found in summons or lower court orders; complaint to proceed in accordance with law.</div>
+          </div>
+        </div>
+        <div class="rg-blockq">"Proceedings under Section 50 PMLA are 'inquiries' for evidence collection regarding proceeds of crime, distinct from Cr.P.C. Chapter XII 'investigations' for prosecution. Statements recorded under Section 50 PMLA are deemed judicial proceedings (Section 50(4)) and admissible; not hit by Article 20(3) at summons stage."<br><small style="font-size:0.78rem;color:var(--text-muted);font-style:normal;display:block;margin-top:8px;">— Key Legal Principle, SC Judgment 09-Sep-2024</small></div>
+        <h4>Procedural History</h4>
+        <div class="rg-tl">
+          <div class="rg-tl-row"><div class="rg-tl-date">22 July 2021</div><div class="rg-tl-event">ED issues first summons to Abhishek Banerjee under Section 50 PMLA for appearance in New Delhi on 03.08.2021.</div></div>
+          <div class="rg-tl-row"><div class="rg-tl-date">06 Sep 2021</div><div class="rg-tl-event">Abhishek appears in New Delhi; issued fresh summons for 08.09.2021. Challenged via W.P.(Crl.) No. 1808/2021 before Delhi HC.</div></div>
+          <div class="rg-tl-row"><div class="rg-tl-date">13 Sep 2021</div><div class="rg-tl-event">ED files complaint against Rujira Banerjee before CMM, Patiala House, New Delhi under Section 63(4) PMLA r/w Section 174 IPC for non-compliance.</div></div>
+          <div class="rg-tl-row"><div class="rg-tl-date">11 March 2022</div><div class="rg-tl-event">Delhi HC dismisses both petitions (impugned order).</div></div>
+          <div class="rg-tl-row"><div class="rg-tl-date">09 Sep 2024</div><div class="rg-tl-event">Supreme Court dismisses appeals; upholds ED summons and proceedings in entirety.</div></div>
+        </div>
+      </div>
+
+      <!-- TAB: STATUTES -->
+      <div class="rg-panel" id="tab-statutes">
+        <h3>Section 4: Quick Reference — Key Statutes</h3>
+        <h4>Prevention of Money Laundering Act, 2002 (PMLA)</h4>
+        <table class="rg-stat-table">
+          <thead><tr><th>Section</th><th>Subject</th><th>Relevance to WB Cases</th></tr></thead>
+          <tbody>
+            <tr><td>§ 3</td><td>Defines offence of money laundering</td><td>Foundation for all ED proceedings across Saradha, SSC, Coal cases</td></tr>
+            <tr><td>§ 4</td><td>Punishment for money laundering</td><td>Rigorous imprisonment up to 7 years; up to 10 years for drug offences</td></tr>
+            <tr><td>§ 48</td><td>Authorities empowered under PMLA</td><td>Establishes ED as non-police authority; key to admissibility distinctions</td></tr>
+            <tr><td>§ 50</td><td>Powers re: summons, documents, evidence</td><td>Central to Abhishek Banerjee SC judgment (09 Sep 2024)</td></tr>
+            <tr><td>§ 51</td><td>Jurisdiction of Authorities</td><td>Territorial/administrative directions; HIU jurisdiction arguments</td></tr>
+            <tr><td>§ 63</td><td>Penalty for false information / non-compliance</td><td>Complaint against Rujira Banerjee for non-compliance with summons</td></tr>
+            <tr><td>§ 65</td><td>Applicability of Cr.P.C. provisions</td><td>"Only where not inconsistent" — severely limited by SC judgment</td></tr>
+            <tr><td>§ 71</td><td>Overriding effect over inconsistent laws</td><td>Key provision: PMLA trumps Cr.P.C. where inconsistent</td></tr>
+          </tbody>
+        </table>
+        <h4>Code of Criminal Procedure, 1973 (Cr.P.C.)</h4>
+        <table class="rg-stat-table">
+          <thead><tr><th>Section</th><th>Subject</th><th>Relevance</th></tr></thead>
+          <tbody>
+            <tr><td>§ 91</td><td>Summons for production of documents</td><td>Argued (but rejected) as applicable to PMLA summons</td></tr>
+            <tr><td>§ 160</td><td>Police power to require witness attendance</td><td>Territorial/gender protections — SC held NOT applicable to ED Section 50 inquiries</td></tr>
+            <tr><td>§ 161</td><td>Examination of witnesses by police</td><td>Statements generally inadmissible — distinguished from Section 50 PMLA (admissible)</td></tr>
+            <tr><td>§ 162</td><td>Bar on using police-recorded statements</td><td>Key inconsistency preventing Cr.P.C. Chapter XII from applying to PMLA inquiries</td></tr>
+            <tr><td>§ 174</td><td>Penalty for intentional disobedience of summons</td><td>Used in complaint against Rujira Banerjee</td></tr>
+          </tbody>
+        </table>
+        <h4>Constitutional Provisions</h4>
+        <table class="rg-stat-table">
+          <thead><tr><th>Article</th><th>Subject</th><th>Outcome in SC Judgment</th></tr></thead>
+          <tbody>
+            <tr><td>Art. 20(3)</td><td>Protection against self-incrimination</td><td>Rejected: applies only post-formal arrest, not at summons stage</td></tr>
+            <tr><td>Art. 21</td><td>Right to life and personal liberty; "procedure established by law"</td><td>Rejected: PMLA Rules Form V constitutes valid "procedure established by law"</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- TAB: IMPLICATIONS -->
+      <div class="rg-panel" id="tab-implications">
+        <h3>Section 5: Practical Implications &amp; Takeaways</h3>
+        <div class="rg-impl-grid">
+          <div class="rg-impl-card">
+            <div class="rg-impl-title"><i class="fas fa-balance-scale"></i> For Legal Practitioners</div>
+            <ul>
+              <li><strong>Summons Compliance:</strong> Persons summoned under Section 50 PMLA must attend personally or via authorised agent; territorial challenges require demonstrating absence of nexus</li>
+              <li><strong>Document Production:</strong> Use Form V compliance; objections to procedure must be raised promptly, not via non-appearance</li>
+              <li><strong>Constitutional Challenges:</strong> Article 20(3) claims unavailable at summons stage; may arise only post-formal arrest</li>
+              <li><strong>Gender-Based Relief:</strong> No automatic exemption for women under PMLA; seek relief via judicial discretion, not statutory interpretation</li>
+            </ul>
+          </div>
+          <div class="rg-impl-card">
+            <div class="rg-impl-title"><i class="fas fa-shield-alt"></i> For Investigating Agencies</div>
+            <ul>
+              <li><strong>Territorial Strategy:</strong> Establish clear nexus (fund flows, accused residence) before summoning to non-zonal offices</li>
+              <li><strong>Procedural Rigor:</strong> Strictly follow PMLA Rules, 2005 (Form V) to withstand judicial scrutiny</li>
+              <li><strong>Documentation:</strong> Maintain records demonstrating inquiry (not prosecution) purpose at summons stage</li>
+              <li><strong>Evidence Preservation:</strong> The WBSSC OMR destruction precedent underscores the criticality of contemporaneous evidence safeguarding</li>
+            </ul>
+          </div>
+          <div class="rg-impl-card">
+            <div class="rg-impl-title"><i class="fas fa-chart-line"></i> For Policy Observers</div>
+            <ul>
+              <li><strong>Federal Balance:</strong> SC judgment reinforces central agency autonomy in money-laundering inquiries, potentially intensifying state-center tensions</li>
+              <li><strong>Trial Delays:</strong> Persistent procedural failures (missing records, witness issues) across Saradha/Narada/SSC cases highlight systemic challenges in complex financial crime adjudication</li>
+              <li><strong>Victim-Centric Gaps:</strong> While investigative powers are strengthened, victim/witness protection mechanisms require parallel reinforcement</li>
+              <li><strong>Institutional Design:</strong> SSC scam reveals how politicised recruitment bodies create systemic failure cascades affecting tens of thousands of legitimate candidates</li>
+            </ul>
+          </div>
+        </div>
+        <h4>Cross-Case Agency &amp; Legal Forum Matrix</h4>
+        <table class="rg-stat-table">
+          <thead><tr><th>Scandal/Incident</th><th>Investigating Agency</th><th>Legal Forum</th><th>Connection to SC Jurisprudence</th></tr></thead>
+          <tbody>
+            <tr><td>Coal Theft / Money Laundering (2020)</td><td>CBI → ED</td><td>Special Court PMLA, Rouse Avenue, New Delhi</td><td>Direct subject of SC Judgment (09.09.2024); established ED's summons power under Section 50 PMLA</td></tr>
+            <tr><td>Narada Sting (2014–Present)</td><td>CBI, ED</td><td>Calcutta HC, Special Courts</td><td>Illustrates prolonged PMLA/CBI proceedings; SC judgment reinforces ED's procedural autonomy</td></tr>
+            <tr><td>Saradha Scam (2013–Present)</td><td>CBI, ED, SFIO</td><td>Multiple district courts, Calcutta HC</td><td>SC judgment's emphasis on PMLA's overriding effect impacts ongoing attachment/confiscation proceedings</td></tr>
+            <tr><td>SSC Recruitment Scam (2022–Present)</td><td>ED, CBI</td><td>Calcutta HC, Supreme Court</td><td>ED's summons powers upheld in SC judgment directly relevant; 2025 INSC 437 provides definitive outcome</td></tr>
+            <tr><td>Post-Poll Violence (2021)</td><td>CBI (HC-ordered), SIT</td><td>Calcutta HC</td><td>NHRC suo-motu action parallels ED's inquiry powers under PMLA affirmed in SC judgment</td></tr>
+            <tr><td>Sandeshkhali (2024)</td><td>ED, State Police</td><td>Calcutta HC, SC</td><td>ED's raid/summons powers reinforced by SC judgment upholding Section 50 PMLA autonomy</td></tr>
+          </tbody>
+        </table>
+        <div class="rg-dl-strip">
+          <p><strong>Full Reference Guide on GitHub:</strong> West_Bengal_Case_Law_and_Investigation_Reference_Guide.docx &nbsp;&middot;&nbsp; HelixOriginator/Project-New-Bengal</p>
+          <a class="rg-dl-btn" href="https://github.com/HelixOriginator/Project-New-Bengal/raw/main/West_Bengal_Case_Law_and_Investigation_Reference_Guide.docx" target="_blank"><i class="fas fa-download"></i> Download .docx</a>
+        </div>
+      </div>
+
+    </div><!-- /rg-panels -->
+  </div><!-- /rg-modal-box -->
+</div><!-- /rg-modal -->
+
 </main>
 
 <footer class="footer">
@@ -1134,6 +1565,7 @@
         <h4>Resources</h4>
         <ul>
           <li><a href="#github"><i class="fas fa-chevron-right"></i> GitHub Repos</a></li>
+          <li><a href="#" onclick="openRefGuide();return false;"><i class="fas fa-chevron-right"></i> Case Law Reference Guide</a></li>
           <li><a href="https://zenodo.org/communities/helix-originator/" target="_blank"><i class="fas fa-chevron-right"></i> Zenodo Archive</a></li>
           <li><a href="https://ssrn.com/author=4582910" target="_blank"><i class="fas fa-chevron-right"></i> SSRN Papers</a></li>
           <li><a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank"><i class="fas fa-chevron-right"></i> CC BY-SA License</a></li>
@@ -1205,6 +1637,46 @@
     entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
   }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
   document.querySelectorAll('.reveal, .tl-item').forEach(el => io.observe(el));
+
+  // ===== REFERENCE GUIDE MODAL =====
+  function openRefGuide() {
+    const modal = document.getElementById('rg-modal');
+    modal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    // reset scroll inside modal
+    modal.scrollTop = 0;
+    // focus first tab for accessibility
+    modal.querySelector('.rg-tab.active').focus();
+  }
+  function closeRefGuide() {
+    document.getElementById('rg-modal').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  // Close on backdrop click
+  document.getElementById('rg-modal').addEventListener('click', function(e) {
+    if (e.target === this) closeRefGuide();
+  });
+  // Close on Escape key
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && document.getElementById('rg-modal').classList.contains('open')) {
+      closeRefGuide();
+    }
+  });
+  // Tab switching
+  function switchTab(btn, panelId) {
+    // deactivate all tabs + panels
+    document.querySelectorAll('.rg-tab').forEach(t => {
+      t.classList.remove('active');
+      t.setAttribute('aria-selected', 'false');
+    });
+    document.querySelectorAll('.rg-panel').forEach(p => p.classList.remove('active'));
+    // activate selected
+    btn.classList.add('active');
+    btn.setAttribute('aria-selected', 'true');
+    document.getElementById(panelId).classList.add('active');
+    // scroll panel to top
+    document.querySelector('.rg-panels').scrollTop = 0;
+  }
 </script>
 </body>
 </html>
