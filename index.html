@@ -414,7 +414,96 @@
     .reveal.d1 { transition-delay: 0.1s; }
     .reveal.d2 { transition-delay: 0.2s; }
     .reveal.d3 { transition-delay: 0.3s; }
-    /* REFERENCE GUIDE BUTTON */
+    /* REFERENCE GUIDE FEATURED CARD */
+    .rg-featured-card {
+      position: relative; overflow: hidden;
+      background: linear-gradient(135deg, #0d0d1c 0%, #111124 50%, #0a0a16 100%);
+      border: 1px solid rgba(212,168,83,0.3); border-radius: var(--radius-xl);
+      padding: 0; max-width: 1100px; margin: 0 auto;
+    }
+    .rg-featured-card::before { content:''; position:absolute; top:0; left:0; right:0; height:3px; background: linear-gradient(90deg, var(--violet), var(--gold-bright), var(--teal), var(--gold-bright)); background-size: 200% 100%; animation: shimmer 4s linear infinite; }
+    @keyframes shimmer { 0%{background-position:200% 0} 100%{background-position:-200% 0} }
+    .rg-orb { position: absolute; border-radius: 50%; pointer-events: none; filter: blur(60px); }
+    .rg-orb-1 { width: 300px; height: 300px; background: rgba(212,168,83,0.07); top: -80px; right: -60px; }
+    .rg-orb-2 { width: 250px; height: 250px; background: rgba(124,77,255,0.05); bottom: -60px; left: -40px; }
+    .rg-featured-inner {
+      display: grid; grid-template-columns: auto 1fr auto; gap: 0;
+      position: relative; z-index: 1;
+    }
+    /* Left doc icon panel */
+    .rg-featured-doc {
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: 12px; padding: 40px 32px; border-right: 1px solid rgba(212,168,83,0.12);
+      background: rgba(212,168,83,0.03); min-width: 140px;
+    }
+    .rg-doc-icon {
+      width: 72px; height: 72px; background: linear-gradient(135deg, rgba(212,168,83,0.15), rgba(212,168,83,0.05));
+      border: 1px solid rgba(212,168,83,0.3); border-radius: 16px;
+      display: flex; align-items: center; justify-content: center; font-size: 28px; color: var(--gold-bright);
+      box-shadow: 0 0 30px rgba(212,168,83,0.15); transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .rg-featured-card:hover .rg-doc-icon { transform: scale(1.05) rotate(3deg); box-shadow: 0 0 50px rgba(212,168,83,0.25); }
+    .rg-doc-badge { font-size: 0.62rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--teal); background: rgba(26,188,156,0.1); border: 1px solid rgba(26,188,156,0.25); padding: 4px 10px; border-radius: 99px; display: flex; align-items: center; gap: 4px; text-align: center; }
+    .rg-doc-format { font-size: 0.62rem; font-weight: 600; color: var(--text-muted); display: flex; align-items: center; gap: 5px; }
+    .rg-doc-format i { color: var(--text-gold); }
+    /* Centre body */
+    .rg-featured-body { padding: 36px 36px; }
+    .rg-featured-eyebrow { font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-gold); margin-bottom: 12px; display: flex; align-items: center; gap: 6px; }
+    .rg-featured-eyebrow i { font-size: 10px; }
+    .rg-featured-title { font-family: 'Crimson Pro', serif; font-size: clamp(1.4rem, 2.5vw, 1.9rem); font-weight: 600; line-height: 1.2; margin-bottom: 14px; color: var(--text-primary); }
+    .rg-featured-desc { font-size: 0.87rem; color: var(--text-secondary); line-height: 1.8; margin-bottom: 18px; max-width: 560px; }
+    .rg-featured-pills { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 18px; }
+    .rg-featured-repo {
+      display: inline-flex; align-items: center; gap: 9px;
+      font-size: 0.72rem; color: var(--text-muted); background: rgba(255,255,255,0.03);
+      border: 1px solid var(--border-dim); border-radius: 6px; padding: 7px 13px;
+    }
+    .rg-featured-repo i { color: var(--text-gold); font-size: 13px; }
+    .rg-featured-repo strong { color: var(--text-secondary); }
+    /* Right CTAs */
+    .rg-featured-ctas {
+      display: flex; flex-direction: column; gap: 10px; padding: 36px 32px;
+      border-left: 1px solid rgba(212,168,83,0.12); min-width: 240px; justify-content: center;
+    }
+    .rg-cta-primary {
+      display: flex; align-items: center; gap: 14px; padding: 16px 20px;
+      background: var(--grad-gold); color: #050508; border-radius: var(--radius);
+      border: none; cursor: pointer; transition: all 0.25s; text-align: left; width: 100%;
+    }
+    .rg-cta-primary:hover { transform: translateY(-3px); box-shadow: 0 14px 40px rgba(212,168,83,0.4); }
+    .rg-cta-icon { width: 36px; height: 36px; background: rgba(0,0,0,0.15); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 15px; flex-shrink: 0; }
+    .rg-cta-text { display: flex; flex-direction: column; }
+    .rg-cta-text strong { font-size: 0.88rem; font-weight: 700; display: block; line-height: 1.2; }
+    .rg-cta-text em { font-style: normal; font-size: 0.7rem; opacity: 0.75; margin-top: 2px; display: block; }
+    .rg-cta-secondary {
+      display: flex; align-items: center; gap: 12px; padding: 12px 16px;
+      background: rgba(255,255,255,0.03); color: var(--text-secondary);
+      border: 1px solid var(--border-mid); border-radius: var(--radius);
+      text-decoration: none; transition: all 0.2s; width: 100%;
+    }
+    .rg-cta-secondary:hover { border-color: var(--gold-dim); color: var(--text-gold); background: rgba(212,168,83,0.06); }
+    .rg-cta-secondary i { font-size: 14px; color: var(--text-gold); flex-shrink: 0; width: 18px; text-align: center; }
+    .rg-cta-secondary span { display: flex; flex-direction: column; }
+    .rg-cta-secondary strong { font-size: 0.82rem; font-weight: 600; display: block; line-height: 1.2; }
+    .rg-cta-secondary em { font-style: normal; font-size: 0.68rem; color: var(--text-muted); margin-top: 2px; display: block; }
+    .rg-cta-download {
+      display: flex; align-items: center; justify-content: center; gap: 8px; padding: 11px 16px;
+      background: transparent; color: var(--text-gold); border: 1.5px solid rgba(212,168,83,0.35);
+      border-radius: var(--radius); font-size: 0.82rem; font-weight: 600;
+      text-decoration: none; transition: all 0.2s; width: 100%;
+    }
+    .rg-cta-download:hover { background: rgba(212,168,83,0.08); border-color: var(--gold-bright); transform: translateY(-2px); }
+    /* Mobile responsive for featured card */
+    @media (max-width: 900px) {
+      .rg-featured-inner { grid-template-columns: 1fr; }
+      .rg-featured-doc { flex-direction: row; border-right: none; border-bottom: 1px solid rgba(212,168,83,0.12); padding: 20px 28px; min-width: auto; }
+      .rg-featured-ctas { border-left: none; border-top: 1px solid rgba(212,168,83,0.12); padding: 24px 28px; min-width: auto; display: grid; grid-template-columns: 1fr 1fr; }
+      .rg-cta-primary { grid-column: 1 / -1; }
+    }
+    @media (max-width: 540px) {
+      .rg-featured-ctas { grid-template-columns: 1fr; }
+      .rg-featured-body { padding: 24px 20px; }
+    }
     .btn-refguide {
       background: linear-gradient(135deg, #1a1a30, #252540);
       color: var(--text-gold); border: 1.5px solid rgba(212,168,83,0.4);
@@ -1183,7 +1272,7 @@
       <div class="oss-icon"><i class="fab fa-github"></i></div>
       <h2>Open-Source on GitHub</h2>
       <p>The entire framework is hosted as open-source repositories. Organizations can fork, contribute, and co-brand. Rigorous source-verified research meets institutional publishing infrastructure.</p>
-      <a href="https://github.com/helixoriginator/new-bengal-framework" class="btn btn-gold" target="_blank">
+      <a href="https://github.com/HelixOriginator/Project-New-Bengal" class="btn btn-gold" target="_blank">
         <i class="fab fa-github"></i> View on GitHub
       </a>
       <div class="repo-grid">
@@ -1242,36 +1331,75 @@
     <div class="section-header ctr" style="margin-bottom:44px;">
       <div class="section-label"><i class="fas fa-book-open"></i> Legal Reference</div>
       <h2 class="section-title">Case Law &amp; Investigation Reference Guide</h2>
-      <p class="section-desc">A comprehensive ready reckoner covering West Bengal's major political-financial controversies, key SC judgments, PMLA legal principles, and cross-agency investigation timelines — 2013 to 2026.</p>
+      <p class="section-desc">A comprehensive ready reckoner covering West Bengal's major political-financial controversies, key SC judgments, PMLA legal principles, and cross-agency investigation timelines &#8212; 2013 to 2026.</p>
     </div>
-    <div class="refguide-promo reveal">
-      <div class="refguide-promo-text">
-        <h3>West Bengal Political-Financial Controversies &amp; Key Legal Developments</h3>
-        <p>This reference guide synthesises the Saradha chit-fund collapse, post-poll violence, Sandeshkhali crisis, SSC recruitment scam, and the landmark Supreme Court ruling in <em>Abhishek Banerjee vs. Enforcement Directorate</em> (09 Sep 2024) on PMLA summons powers. Includes statutes quick-reference, procedural cross-comparisons, and implications for legal practitioners, investigating agencies, and policy observers.</p>
-        <div class="refguide-meta-pills">
-          <span class="rg-pill rg-pill-gold"><i class="fas fa-landmark"></i> 2 SC Judgments</span>
-          <span class="rg-pill rg-pill-red"><i class="fas fa-shield-alt"></i> CBI / ED / NHRC</span>
-          <span class="rg-pill rg-pill-violet"><i class="fas fa-gavel"></i> PMLA Deep Dive</span>
-          <span class="rg-pill rg-pill-teal"><i class="fas fa-clock"></i> 2013&ndash;2026 Timeline</span>
-          <span class="rg-pill rg-pill-gold"><i class="fas fa-code-branch"></i> GitHub &middot; CC BY 4.0</span>
+
+    <!-- FEATURED DOCUMENT CARD -->
+    <div class="rg-featured-card reveal">
+      <!-- Animated glow orbs -->
+      <div class="rg-orb rg-orb-1"></div>
+      <div class="rg-orb rg-orb-2"></div>
+
+      <div class="rg-featured-inner">
+        <!-- Left: Document icon + badge -->
+        <div class="rg-featured-doc">
+          <div class="rg-doc-icon">
+            <i class="fas fa-book-open"></i>
+          </div>
+          <div class="rg-doc-badge"><i class="fas fa-check-circle"></i> Verified Public Records</div>
+          <div class="rg-doc-format"><i class="fab fa-github"></i> GitHub &middot; .docx</div>
         </div>
-        <div style="display:flex;flex-wrap:wrap;gap:10px;align-items:center;">
-          <span style="font-size:0.75rem;color:var(--text-muted);"><i class="fab fa-github" style="margin-right:5px;color:var(--text-gold);"></i>
-          <strong style="color:var(--text-secondary);">HelixOriginator/Project-New-Bengal</strong> &nbsp;&middot;&nbsp; West_Bengal_Case_Law_and_Investigation_Reference_Guide.docx</span>
+
+        <!-- Centre: Title + description + pills -->
+        <div class="rg-featured-body">
+          <div class="rg-featured-eyebrow"><i class="fas fa-file-alt"></i> Comprehensive Ready Reckoner &middot; 2013&#8211;2026</div>
+          <h3 class="rg-featured-title">West Bengal Political-Financial<br>Controversies &amp; Key Legal Developments</h3>
+          <p class="rg-featured-desc">
+            This reference guide synthesises the Saradha chit-fund collapse, post-poll violence, Sandeshkhali crisis, SSC recruitment scam, and the landmark Supreme Court ruling in <em>Abhishek Banerjee vs. Enforcement Directorate</em> (09 Sep 2024). Covers PMLA summons powers under Section 50, territorial jurisdiction, admissibility of ED statements, statutes quick-reference, and practical implications for legal practitioners, investigating agencies, and policy observers.
+          </p>
+          <div class="rg-featured-pills">
+            <span class="rg-pill rg-pill-gold"><i class="fas fa-landmark"></i> 2 SC Judgments</span>
+            <span class="rg-pill rg-pill-red"><i class="fas fa-shield-alt"></i> CBI / ED / NHRC</span>
+            <span class="rg-pill rg-pill-violet"><i class="fas fa-gavel"></i> PMLA Deep Dive</span>
+            <span class="rg-pill rg-pill-teal"><i class="fas fa-clock"></i> 2013&#8211;2026 Timeline</span>
+            <span class="rg-pill rg-pill-gold"><i class="fab fa-creative-commons"></i> CC BY 4.0</span>
+          </div>
+          <div class="rg-featured-repo">
+            <i class="fab fa-github"></i>
+            <span><strong>HelixOriginator / Project-New-Bengal</strong> &nbsp;&middot;&nbsp; West_Bengal_Case_Law_and_Investigation_Reference_Guide.docx</span>
+          </div>
+        </div>
+
+        <!-- Right: CTAs -->
+        <div class="rg-featured-ctas">
+          <button class="rg-cta-primary" onclick="openRefGuide()">
+            <span class="rg-cta-icon"><i class="fas fa-book-open"></i></span>
+            <span class="rg-cta-text">
+              <strong>Open Reference Guide</strong>
+              <em>Read in-browser &mdash; all 8 sections</em>
+            </span>
+          </button>
+          <a class="rg-cta-secondary" href="https://helixoriginator.github.io/Project-New-Bengal/" target="_blank">
+            <i class="fas fa-external-link-alt"></i>
+            <span>
+              <strong>Live Site</strong>
+              <em>helixoriginator.github.io</em>
+            </span>
+          </a>
+          <a class="rg-cta-secondary" href="https://github.com/HelixOriginator/Project-New-Bengal" target="_blank">
+            <i class="fab fa-github"></i>
+            <span>
+              <strong>View Repository</strong>
+              <em>HelixOriginator/Project-New-Bengal</em>
+            </span>
+          </a>
+          <a class="rg-cta-download" href="https://raw.githubusercontent.com/HelixOriginator/Project-New-Bengal/main/West_Bengal_Case_Law_and_Investigation_Reference_Guide.docx" target="_blank">
+            <i class="fas fa-download"></i> Download .docx
+          </a>
         </div>
       </div>
-      <div class="refguide-promo-cta">
-        <button class="btn-rg-open" onclick="openRefGuide()">
-          <i class="fas fa-book-open"></i> Open Reference Guide
-        </button>
-        <a class="btn-rg-gh" href="https://github.com/HelixOriginator/Project-New-Bengal/blob/main/West_Bengal_Case_Law_and_Investigation_Reference_Guide.docx" target="_blank">
-          <i class="fab fa-github"></i> View on GitHub
-        </a>
-        <a class="btn-rg-gh" href="https://github.com/HelixOriginator/Project-New-Bengal/raw/main/West_Bengal_Case_Law_and_Investigation_Reference_Guide.docx" target="_blank">
-          <i class="fas fa-download"></i> Download .docx
-        </a>
-      </div>
     </div>
+
   </div>
 </section>
 
@@ -1331,7 +1459,7 @@
         </ul>
         <div class="rg-dl-strip">
           <p><strong>Full document available on GitHub:</strong> West_Bengal_Case_Law_and_Investigation_Reference_Guide.docx</p>
-          <a class="rg-dl-btn" href="https://github.com/HelixOriginator/Project-New-Bengal/raw/main/West_Bengal_Case_Law_and_Investigation_Reference_Guide.docx" target="_blank"><i class="fas fa-download"></i> Download .docx</a>
+          <a class="rg-dl-btn" href="https://raw.githubusercontent.com/HelixOriginator/Project-New-Bengal/main/West_Bengal_Case_Law_and_Investigation_Reference_Guide.docx" target="_blank"><i class="fas fa-download"></i> Download .docx</a>
         </div>
       </div>
 
@@ -1529,7 +1657,7 @@
         </table>
         <div class="rg-dl-strip">
           <p><strong>Full Reference Guide on GitHub:</strong> West_Bengal_Case_Law_and_Investigation_Reference_Guide.docx &nbsp;&middot;&nbsp; HelixOriginator/Project-New-Bengal</p>
-          <a class="rg-dl-btn" href="https://github.com/HelixOriginator/Project-New-Bengal/raw/main/West_Bengal_Case_Law_and_Investigation_Reference_Guide.docx" target="_blank"><i class="fas fa-download"></i> Download .docx</a>
+          <a class="rg-dl-btn" href="https://raw.githubusercontent.com/HelixOriginator/Project-New-Bengal/main/West_Bengal_Case_Law_and_Investigation_Reference_Guide.docx" target="_blank"><i class="fas fa-download"></i> Download .docx</a>
         </div>
       </div>
 
