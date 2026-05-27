@@ -340,8 +340,8 @@
     .oss-card h2 { font-family: 'Crimson Pro', serif; font-size: 2.1rem; margin-bottom: 14px; font-weight: 600; }
     .oss-card > p { color: var(--text-secondary); font-size: 1rem; max-width: 580px; margin: 0 auto 34px; line-height: 1.8; }
     .repo-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 14px; margin-top: 36px; text-align: left; }
-    .repo-item { background: var(--bg-elevated); border: 1px solid var(--border-dim); border-radius: var(--radius); padding: 20px; transition: all 0.25s; }
-    .repo-item:hover { border-color: var(--border-mid); transform: translateY(-3px); }
+    .repo-item { background: var(--bg-elevated); border: 1px solid var(--border-dim); border-radius: var(--radius); padding: 20px; transition: all 0.25s; display: block; }
+    .repo-item:hover { border-color: var(--gold-dim); transform: translateY(-3px); box-shadow: 0 8px 28px rgba(0,0,0,0.4); background: var(--bg-card-hover); }
     .repo-name { font-family: 'JetBrains Mono', monospace; font-size: 0.77rem; font-weight: 600; color: var(--text-gold); margin-bottom: 7px; display: flex; align-items: center; gap: 6px; }
     .repo-desc { font-size: 0.8rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 11px; }
     .repo-meta { display: flex; gap: 12px; font-size: 0.7rem; color: var(--text-muted); }
@@ -1271,31 +1271,71 @@
     <div class="oss-card reveal">
       <div class="oss-icon"><i class="fab fa-github"></i></div>
       <h2>Open-Source on GitHub</h2>
-      <p>The entire framework is hosted as open-source repositories. Organizations can fork, contribute, and co-brand. Rigorous source-verified research meets institutional publishing infrastructure.</p>
-      <a href="https://github.com/HelixOriginator/Project-New-Bengal" class="btn btn-gold" target="_blank">
-        <i class="fab fa-github"></i> View on GitHub
-      </a>
+      <p>The entire framework is hosted publicly at <strong>HelixOriginator/Project-New-Bengal</strong>. Organizations can fork, contribute, and co-brand. Rigorous source-verified research meets institutional publishing infrastructure.</p>
+
+      <div style="display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-bottom:36px;">
+        <a href="https://github.com/HelixOriginator/Project-New-Bengal" class="btn btn-gold" target="_blank">
+          <i class="fab fa-github"></i> View Repository on GitHub
+        </a>
+        <a href="https://helixoriginator.github.io/Project-New-Bengal/" class="btn btn-outline" target="_blank">
+          <i class="fas fa-external-link-alt"></i> Visit Live Site
+        </a>
+      </div>
+
       <div class="repo-grid">
-        <div class="repo-item">
-          <div class="repo-name"><i class="fas fa-code-branch"></i> new-bengal-model</div>
-          <div class="repo-desc">Core governance framework and policy intelligence stack for Bengal's renaissance.</div>
-          <div class="repo-meta"><span><i class="fas fa-star"></i> 42</span><span><i class="fas fa-code-branch"></i> 12</span></div>
-        </div>
-        <div class="repo-item">
-          <div class="repo-name"><i class="fas fa-code-branch"></i> bengal-citizen-security-card</div>
-          <div class="repo-desc">Digital identity, welfare tracking, and grievance redressal system design.</div>
-          <div class="repo-meta"><span><i class="fas fa-star"></i> 28</span><span><i class="fas fa-code-branch"></i> 8</span></div>
-        </div>
-        <div class="repo-item">
-          <div class="repo-name"><i class="fas fa-code-branch"></i> viksit-bharat-governance-intel</div>
-          <div class="repo-desc">National governance intelligence with Bengal-specific accountability modules.</div>
-          <div class="repo-meta"><span><i class="fas fa-star"></i> 35</span><span><i class="fas fa-code-branch"></i> 15</span></div>
-        </div>
-        <div class="repo-item">
-          <div class="repo-name"><i class="fas fa-code-branch"></i> bengal-accountability-reckoner</div>
-          <div class="repo-desc">Documented ED/CBI/NHRC/Court cases (2011&#8211;2026) as diagnostic input.</div>
-          <div class="repo-meta"><span><i class="fas fa-star"></i> 56</span><span><i class="fas fa-code-branch"></i> 22</span></div>
-        </div>
+        <!-- Main repo -->
+        <a class="repo-item" href="https://github.com/HelixOriginator/Project-New-Bengal" target="_blank" style="text-decoration:none;">
+          <div class="repo-name"><i class="fas fa-code-branch"></i> Project-New-Bengal</div>
+          <div class="repo-desc">Core repository: governance accountability framework, case law reference guide, Supreme Court judgment analysis, and renaissance model for West Bengal.</div>
+          <div class="repo-meta" style="margin-top:10px;">
+            <span style="color:var(--text-gold);font-size:0.72rem;font-weight:600;"><i class="fas fa-circle" style="font-size:7px;margin-right:4px;color:#f1e05a;"></i> HTML &nbsp;100%</span>
+            <span><i class="fab fa-creative-commons" style="color:var(--text-gold);margin-right:3px;"></i> CC BY 4.0</span>
+          </div>
+        </a>
+        <!-- index.html -->
+        <a class="repo-item" href="https://github.com/HelixOriginator/Project-New-Bengal/blob/main/index.html" target="_blank" style="text-decoration:none;">
+          <div class="repo-name"><i class="fas fa-file-code"></i> index.html</div>
+          <div class="repo-desc">Full-stack dark-theme web framework: SC judgment deep-dive, case cards, timeline, renaissance model, legal reference guide modal — all in one file.</div>
+          <div class="repo-meta" style="margin-top:10px;">
+            <span><i class="fas fa-code" style="color:var(--text-gold);margin-right:4px;"></i> Main Page</span>
+            <span><i class="fas fa-eye" style="color:var(--text-gold);margin-right:4px;"></i> Live on GitHub Pages</span>
+          </div>
+        </a>
+        <!-- Reference Guide docx -->
+        <a class="repo-item" href="https://raw.githubusercontent.com/HelixOriginator/Project-New-Bengal/main/West_Bengal_Case_Law_and_Investigation_Reference_Guide.docx" target="_blank" style="text-decoration:none;">
+          <div class="repo-name"><i class="fas fa-file-word"></i> Case Law Reference Guide</div>
+          <div class="repo-desc">West_Bengal_Case_Law_and_Investigation_Reference_Guide.docx — comprehensive ready reckoner covering Saradha, post-poll violence, Sandeshkhali, SSC scam &amp; PMLA case law.</div>
+          <div class="repo-meta" style="margin-top:10px;">
+            <span><i class="fas fa-download" style="color:var(--text-gold);margin-right:4px;"></i> Direct Download</span>
+            <span><i class="fas fa-file-alt" style="color:var(--text-gold);margin-right:4px;"></i> .docx</span>
+          </div>
+        </a>
+        <!-- README -->
+        <a class="repo-item" href="https://github.com/HelixOriginator/Project-New-Bengal/blob/main/README.md" target="_blank" style="text-decoration:none;">
+          <div class="repo-name"><i class="fas fa-book"></i> README.md</div>
+          <div class="repo-desc">Project vision, objectives, coverage areas, research principles, data sources, contributing guidelines, and licensing. Full repository documentation.</div>
+          <div class="repo-meta" style="margin-top:10px;">
+            <span><i class="fas fa-star" style="color:var(--text-gold);margin-right:4px;"></i> Project Docs</span>
+            <span><i class="fas fa-users" style="color:var(--text-gold);margin-right:4px;"></i> Contributing Welcome</span>
+          </div>
+        </a>
+      </div>
+
+      <!-- Contributor strip -->
+      <div style="margin-top:32px;padding-top:24px;border-top:1px solid var(--border-dim);display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap;">
+        <span style="font-size:0.78rem;color:var(--text-muted);">
+          <i class="fas fa-user-circle" style="color:var(--text-gold);margin-right:6px;"></i>
+          Maintained by <strong style="color:var(--text-secondary);">Kallol Chakrabarti</strong> &nbsp;&middot;&nbsp; ORCID: 0009-0007-4971-8936
+        </span>
+        <a href="https://github.com/HelixOriginator/Project-New-Bengal/blob/main/README.md" target="_blank" style="font-size:0.75rem;color:var(--text-link);text-decoration:none;display:inline-flex;align-items:center;gap:5px;">
+          <i class="fas fa-code-branch"></i> Contributing Guidelines
+        </a>
+        <a href="https://github.com/HelixOriginator/Project-New-Bengal/blob/main/robots.txt" target="_blank" style="font-size:0.75rem;color:var(--text-link);text-decoration:none;display:inline-flex;align-items:center;gap:5px;">
+          <i class="fas fa-robot"></i> robots.txt
+        </a>
+        <a href="https://github.com/HelixOriginator/Project-New-Bengal/blob/main/sitemap.xml" target="_blank" style="font-size:0.75rem;color:var(--text-link);text-decoration:none;display:inline-flex;align-items:center;gap:5px;">
+          <i class="fas fa-sitemap"></i> sitemap.xml
+        </a>
       </div>
     </div>
   </div>
